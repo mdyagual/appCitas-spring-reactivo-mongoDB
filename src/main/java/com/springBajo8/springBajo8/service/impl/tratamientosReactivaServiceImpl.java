@@ -1,6 +1,5 @@
 package com.springBajo8.springBajo8.service.impl;
 
-import com.springBajo8.springBajo8.domain.padecimientosDTOReactiva;
 import com.springBajo8.springBajo8.domain.tratamientosDTOReactiva;
 import com.springBajo8.springBajo8.repository.ItratamientosReactivaRepository;
 import com.springBajo8.springBajo8.service.ItratamientosReactivaService;
