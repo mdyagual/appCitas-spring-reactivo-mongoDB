@@ -48,4 +48,20 @@ public class citasReactivaResource {
         return this.icitasReactivaService.findAll();
     }
 
+    //TO DO: Primeras 3 funcionalidades
+    @GetMapping(value = "/citasReactivas/buscarFecha/{fecha}")
+    private Flux<citasDTOReactiva> buscarPorFecha(@PathVariable("fecha") String fecha) {
+        return this.icitasReactivaService.findByDate(fecha);
+    }
+
+    @GetMapping(value = "/citasReactivas/buscarHora/{hora}")
+    private Flux<citasDTOReactiva> buscarPorHora(@PathVariable("hora") String hora) {
+        return this.icitasReactivaService.findByHour(hora);
+    }
+
+    @GetMapping(value = "/citasReactivas/buscarDoctor/{doctor}")
+    private Flux<citasDTOReactiva> buscarDoctor(@PathVariable("doctor") String nomDoctor) {
+        return this.icitasReactivaService.findDoctor(nomDoctor);
+    }
+
 }

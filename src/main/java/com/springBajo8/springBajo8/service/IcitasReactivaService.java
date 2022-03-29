@@ -20,11 +20,11 @@ public interface IcitasReactivaService {
 
     Mono<citasDTOReactiva> findById(String id);
 
-    Flux<citasDTOReactiva> findByDate(LocalDate date);
+    Flux<citasDTOReactiva> findByDate(String date);
 
     Flux<citasDTOReactiva> findByHour(String date);
 
-    Flux<citasDTOReactiva> findDoctor(String id);
+    Flux<citasDTOReactiva> findDoctor(String nombre);
 
 
 
