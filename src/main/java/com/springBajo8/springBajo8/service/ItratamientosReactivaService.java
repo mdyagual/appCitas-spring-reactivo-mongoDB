@@ -1,6 +1,5 @@
 package com.springBajo8.springBajo8.service;
 
-import com.springBajo8.springBajo8.domain.padecimientosDTOReactiva;
 import com.springBajo8.springBajo8.domain.tratamientosDTOReactiva;
 
 import reactor.core.publisher.Flux;
@@ -12,7 +11,7 @@ public interface ItratamientosReactivaService {
 
     Mono<tratamientosDTOReactiva> delete(String id);
 
-    Mono<tratamientosDTOReactiva> update(String id, padecimientosDTOReactiva padecimientosDTOReactiva);
+    Mono<tratamientosDTOReactiva> update(String id, tratamientosDTOReactiva tratamientosDTOReactiva);
 
     Flux<tratamientosDTOReactiva> findByIdTratamiento(String id);
 
