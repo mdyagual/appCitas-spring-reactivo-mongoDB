@@ -7,6 +7,7 @@ import com.springBajo8.springBajo8.domain.citasDTOReactiva;
 import com.springBajo8.springBajo8.repository.IcitasReactivaRepository;
 import com.springBajo8.springBajo8.service.IcitasReactivaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -70,7 +71,27 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     }
 
     @Override
-    public Flux<citasDTOReactiva> findDoctor(String nombre) {
-        return this.IcitasReactivaRepository.findByNombreMedico(nombre);
+    public Mono<citasDTOReactiva> findDoctorConsult(String id) {
+        return this.IcitasReactivaRepository.findById(id).flatMap(
+                d -> {
+                    citasDTOReactiva doctor = new citasDTOReactiva();
+                    doctor.setApellidosMedico(d.getApellidosMedico());
+                    doctor.setNombreMedico(d.getNombreMedico());
+                    return Mono.justOrEmpty(doctor);
+                }
+        );
     }
+
+    @Override
+    public Mono<citasDTOReactiva> cancelAppointment(String id) {
+        return this.IcitasReactivaRepository.findById(id).flatMap(
+                a -> {
+                    a.setEstadoReservaCita("Cancelada");
+                    this.IcitasReactivaRepository.save(a);
+                    return Mono.just(a);
+                }
+        ).switchIfEmpty(Mono.empty());
+    }
+
+
 }
