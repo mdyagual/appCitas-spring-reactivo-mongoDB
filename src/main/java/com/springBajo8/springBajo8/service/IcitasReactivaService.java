@@ -17,4 +17,7 @@ public interface IcitasReactivaService {
     Flux<citasDTOReactiva> findAll();
 
     Mono<citasDTOReactiva> findById(String id);
+
+    //Método para imprimir solo los padecimientos de un paciente, dado su id
+    Flux<citasDTOReactiva> findPadecimientosByIdPaciente(String id);
 }

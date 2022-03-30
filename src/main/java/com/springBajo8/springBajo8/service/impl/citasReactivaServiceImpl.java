@@ -55,4 +55,10 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     public Mono<citasDTOReactiva> findById(String id) {
         return this.IcitasReactivaRepository.findById(id);
     }
+
+    @Override
+    public Flux<citasDTOReactiva> findPadecimientosByIdPaciente(String id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
