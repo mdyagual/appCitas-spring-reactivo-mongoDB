@@ -7,9 +7,12 @@ import com.springBajo8.springBajo8.domain.citasDTOReactiva;
 import com.springBajo8.springBajo8.repository.IcitasReactivaRepository;
 import com.springBajo8.springBajo8.service.IcitasReactivaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.time.LocalDate;
 
 @Service
 public class citasReactivaServiceImpl implements IcitasReactivaService {
@@ -56,6 +59,7 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
         return this.IcitasReactivaRepository.findById(id);
     }
 
+<<<<<<< HEAD
     @Override
     public Flux<citasDTOReactiva> findPadecimientosByIdPaciente(String id) {
         Flux<citasDTOReactiva> pacientes = this.IcitasReactivaRepository.findByIdPaciente(id);
@@ -65,4 +69,41 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
         return pacientes;
         
     }
+=======
+    //TO DO - Implementar funcionalidades
+    @Override
+    public Flux<citasDTOReactiva> findByDate(String date) {
+        LocalDate ld= LocalDate.parse(date);
+        return this.IcitasReactivaRepository.findByFechaReservaCita(ld);
+    }
+
+    @Override
+    public Flux<citasDTOReactiva> findByHour(String hour) {
+        return this.IcitasReactivaRepository.findByHoraReservaCita(hour);
+    }
+
+    @Override
+    public Mono<citasDTOReactiva> findDoctorConsult(String id) {
+        return this.IcitasReactivaRepository.findById(id).flatMap(
+                d -> {
+                    citasDTOReactiva doctor = new citasDTOReactiva();
+                    doctor.setApellidosMedico(d.getApellidosMedico());
+                    doctor.setNombreMedico(d.getNombreMedico());
+                    return Mono.justOrEmpty(doctor);
+                }
+        );
+    }
+
+    @Override
+    public Mono<citasDTOReactiva> cancelAppointment(String id) {
+        return this.IcitasReactivaRepository.findById(id).flatMap(
+                a -> {
+                    a.setEstadoReservaCita("Cancelada");
+                    return this.save(a);
+                }
+        ).switchIfEmpty(Mono.empty());
+    }
+
+
+>>>>>>> mishell-dev
 }

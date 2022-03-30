@@ -52,10 +52,32 @@ public class citasReactivaResource {
         return this.icitasReactivaService.findAll();
     }
 
+<<<<<<< HEAD
 
     @GetMapping("/citasReactivas/{id}/findPadecimientos")
     private Flux<citasDTOReactiva> findPadecimientosByIdPaciente(@PathVariable("id") String id){
         return this.icitasReactivaService.findPadecimientosByIdPaciente(id);
+=======
+    //TO DO: Primeras 3 funcionalidades
+    @GetMapping(value = "/citasReactivas/buscarFecha/{fecha}")
+    private Flux<citasDTOReactiva> buscarPorFecha(@PathVariable("fecha") String fecha) {
+        return this.icitasReactivaService.findByDate(fecha);
+    }
+
+    @GetMapping(value = "/citasReactivas/buscarHora/{hora}")
+    private Flux<citasDTOReactiva> buscarPorHora(@PathVariable("hora") String hora) {
+        return this.icitasReactivaService.findByHour(hora);
+    }
+
+    @GetMapping(value = "/citasReactivas/buscarDoctorConsulta/{consultaId}")
+    private Mono<citasDTOReactiva> buscarDoctorConsulta(@PathVariable("consultaId") String consultaId) {
+        return this.icitasReactivaService.findDoctorConsult(consultaId);
+    }
+
+    @PutMapping("/citasReactivas/cancelarCita/{id}")
+    private Mono<citasDTOReactiva> cancelarCita(@PathVariable("id") String id) {
+        return this.icitasReactivaService.cancelAppointment(id);
+>>>>>>> mishell-dev
     }
 
 }
