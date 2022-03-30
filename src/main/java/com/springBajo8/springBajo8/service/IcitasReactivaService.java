@@ -21,10 +21,9 @@ public interface IcitasReactivaService {
 
     Mono<citasDTOReactiva> findById(String id);
 
-<<<<<<< HEAD
     //Método para imprimir solo los padecimientos de un paciente, dado su id
     Flux<citasDTOReactiva> findPadecimientosByIdPaciente(String id);
-=======
+
     Flux<citasDTOReactiva> findByDate(String date);
 
     Flux<citasDTOReactiva> findByHour(String date);
@@ -34,6 +33,4 @@ public interface IcitasReactivaService {
     Mono<citasDTOReactiva> cancelAppointment(String id);
 
 
-
->>>>>>> mishell-dev
 }
