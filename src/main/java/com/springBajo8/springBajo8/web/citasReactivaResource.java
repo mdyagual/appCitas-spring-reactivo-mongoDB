@@ -59,9 +59,14 @@ public class citasReactivaResource {
         return this.icitasReactivaService.findByHour(hora);
     }
 
-    @GetMapping(value = "/citasReactivas/buscarDoctor/{doctor}")
-    private Flux<citasDTOReactiva> buscarDoctor(@PathVariable("doctor") String nomDoctor) {
-        return this.icitasReactivaService.findDoctor(nomDoctor);
+    @GetMapping(value = "/citasReactivas/buscarDoctorConsulta/{consultaId}")
+    private Mono<citasDTOReactiva> buscarDoctorConsulta(@PathVariable("consultaId") String consultaId) {
+        return this.icitasReactivaService.findDoctorConsult(consultaId);
+    }
+
+    @PutMapping("/citasReactivas/cancelarCita/{id}")
+    private Mono<citasDTOReactiva> cancelarCita(@PathVariable("id") String id) {
+        return this.icitasReactivaService.cancelAppointment(id);
     }
 
 }
