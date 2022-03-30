@@ -58,7 +58,11 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
 
     @Override
     public Flux<citasDTOReactiva> findPadecimientosByIdPaciente(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        Flux<citasDTOReactiva> pacientes = this.IcitasReactivaRepository.findByIdPaciente(id);
+
+        pacientes.map(paciente -> paciente.getListaPadecimientos());
+
+        return pacientes;
+        
     }
 }

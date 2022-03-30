@@ -48,4 +48,10 @@ public class citasReactivaResource {
         return this.icitasReactivaService.findAll();
     }
 
+
+    @GetMapping("/citasReactivas/{id}/findPadecimientos")
+    private Flux<citasDTOReactiva> findPadecimientosByIdPaciente(@PathVariable("id") String id){
+        return this.icitasReactivaService.findPadecimientosByIdPaciente(id);
+    }
+
 }
