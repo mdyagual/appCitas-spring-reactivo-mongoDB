@@ -11,6 +11,8 @@ public class tratamientosDTOReactiva {
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
 
+    private String idTratamiento;
+
     private String nombreTratamiento;
     
     private String descripcionTratamiento;
@@ -37,6 +39,14 @@ public class tratamientosDTOReactiva {
 
     public void setDescripcionTratamiento(String descripcionTratamiento) {
         this.descripcionTratamiento = descripcionTratamiento;
+    }
+
+    public String getIdTratamiento() {
+        return idTratamiento;
+    }
+
+    public void setIdTratamiento(String idTratamiento) {
+        this.idTratamiento = idTratamiento;
     }
 
     

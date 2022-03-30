@@ -5,10 +5,12 @@ import com.springBajo8.springBajo8.repository.ItratamientosReactivaRepository;
 import com.springBajo8.springBajo8.service.ItratamientosReactivaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Service
 public class tratamientosReactivaServiceImpl implements ItratamientosReactivaService{
 
     @Autowired
@@ -41,7 +43,7 @@ public class tratamientosReactivaServiceImpl implements ItratamientosReactivaSer
 
     @Override
     public Flux<tratamientosDTOReactiva> findByIdTratamiento(String id) {
-        return this.tratamientosRepo.findByIdTratamientos(id);
+        return this.tratamientosRepo.findByIdTratamiento(id);
     }
 
     @Override

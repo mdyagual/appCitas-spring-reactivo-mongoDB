@@ -8,6 +8,6 @@ import reactor.core.publisher.Flux;
 
 public interface IpadecimientosReactivaRepository extends ReactiveMongoRepository<padecimientosDTOReactiva, String>{
 
-    Flux<padecimientosDTOReactiva> findByIdPadecimientos(String idPadecimiento);
+    Flux<padecimientosDTOReactiva> findByIdPadecimiento(String idPadecimiento);
     
 }

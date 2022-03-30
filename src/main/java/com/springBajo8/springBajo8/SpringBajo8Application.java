@@ -24,7 +24,11 @@ public class SpringBajo8Application {
 				.build();
 	}
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBajo8Application.class, args);
+		try{
+			SpringApplication.run(SpringBajo8Application.class, args);
+		} catch (Throwable ex){
+			ex.printStackTrace();
+		}
 	}
 
 }
