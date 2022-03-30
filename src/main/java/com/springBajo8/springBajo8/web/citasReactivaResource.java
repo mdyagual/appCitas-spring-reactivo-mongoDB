@@ -52,12 +52,12 @@ public class citasReactivaResource {
         return this.icitasReactivaService.findAll();
     }
 
-<<<<<<< HEAD
+
 
     @GetMapping("/citasReactivas/{id}/findPadecimientos")
-    private Flux<citasDTOReactiva> findPadecimientosByIdPaciente(@PathVariable("id") String id){
+    private Flux<citasDTOReactiva> findPadecimientosByIdPaciente(@PathVariable("id") String id) {
         return this.icitasReactivaService.findPadecimientosByIdPaciente(id);
-=======
+    }
     //TO DO: Primeras 3 funcionalidades
     @GetMapping(value = "/citasReactivas/buscarFecha/{fecha}")
     private Flux<citasDTOReactiva> buscarPorFecha(@PathVariable("fecha") String fecha) {
@@ -77,7 +77,7 @@ public class citasReactivaResource {
     @PutMapping("/citasReactivas/cancelarCita/{id}")
     private Mono<citasDTOReactiva> cancelarCita(@PathVariable("id") String id) {
         return this.icitasReactivaService.cancelAppointment(id);
->>>>>>> mishell-dev
+
     }
 
 }

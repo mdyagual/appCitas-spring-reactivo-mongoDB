@@ -59,7 +59,7 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
         return this.IcitasReactivaRepository.findById(id);
     }
 
-<<<<<<< HEAD
+
     @Override
     public Flux<citasDTOReactiva> findPadecimientosByIdPaciente(String id) {
         Flux<citasDTOReactiva> pacientes = this.IcitasReactivaRepository.findByIdPaciente(id);
@@ -69,7 +69,7 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
         return pacientes;
         
     }
-=======
+
     //TO DO - Implementar funcionalidades
     @Override
     public Flux<citasDTOReactiva> findByDate(String date) {
@@ -105,5 +105,4 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     }
 
 
->>>>>>> mishell-dev
 }
