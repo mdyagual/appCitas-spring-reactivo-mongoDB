@@ -4,7 +4,9 @@ package com.springBajo8.springBajo8.service.impl;
 //import com.yoandypv.reactivestack.messages.repository.MessageRepository;
 //import com.yoandypv.reactivestack.messages.service.MessageService;
 import com.springBajo8.springBajo8.domain.citasDTOReactiva;
+import com.springBajo8.springBajo8.domain.padecimientosDTOReactiva;
 import com.springBajo8.springBajo8.repository.IcitasReactivaRepository;
+import com.springBajo8.springBajo8.repository.IpadecimientosReactivaRepository;
 import com.springBajo8.springBajo8.service.IcitasReactivaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +15,16 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
+import java.util.stream.Stream;
 
 @Service
 public class citasReactivaServiceImpl implements IcitasReactivaService {
 
     @Autowired
     private IcitasReactivaRepository IcitasReactivaRepository;
+
+    @Autowired
+    private IpadecimientosReactivaRepository IpadecimientosReactivaRepository;
 
     @Override
     public Mono<citasDTOReactiva> save(citasDTOReactiva citasDTOReactiva) {
@@ -61,14 +67,25 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
 
 
     @Override
-    public Flux<citasDTOReactiva> findPadecimientosByIdPaciente(String id) {
+    public Flux<citasDTOReactiva> findAilingsByIdPaciente(String id) {
         Flux<citasDTOReactiva> pacientes = this.IcitasReactivaRepository.findByIdPaciente(id);
 
-        pacientes.map(paciente -> paciente.getListaPadecimientos());
+        pacientes.map(citasDTOReactiva::getListaPadecimientos);
 
         return pacientes;
         
     }
+
+    @Override
+    public Flux<citasDTOReactiva> findTreatmentsByIdPaciente(String id) {
+        Flux<citasDTOReactiva> pacientes = this.IcitasReactivaRepository.findByIdPaciente(id);
+
+        pacientes.map(citasDTOReactiva::getListaTratamientos);
+
+        return pacientes;
+
+    }
+
 
     //TO DO - Implementar funcionalidades
     @Override
@@ -94,6 +111,7 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
         );
     }
 
+
     @Override
     public Mono<citasDTOReactiva> cancelAppointment(String id) {
         return this.IcitasReactivaRepository.findById(id).flatMap(
@@ -103,6 +121,8 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
                 }
         ).switchIfEmpty(Mono.empty());
     }
+
+
 
 
 }

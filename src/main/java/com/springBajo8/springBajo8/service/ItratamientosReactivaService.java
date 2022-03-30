@@ -7,13 +7,6 @@ import reactor.core.publisher.Mono;
 
 public interface ItratamientosReactivaService {
 
-    Mono<tratamientosDTOReactiva> save(tratamientosDTOReactiva tratamientosDTOReactiva);
-
-    Mono<tratamientosDTOReactiva> delete(String id);
-
-    Mono<tratamientosDTOReactiva> update(String id, tratamientosDTOReactiva tratamientosDTOReactiva);
-
-    Flux<tratamientosDTOReactiva> findByIdTratamiento(String id);
 
     Flux<tratamientosDTOReactiva> findAll();
 

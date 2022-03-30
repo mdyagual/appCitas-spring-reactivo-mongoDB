@@ -20,8 +20,8 @@ public class citasReactivaResource {
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<citasDTOReactiva> save(@RequestBody citasDTOReactiva citasDTOReactiva) {
         
-        System.out.println("Tratamientos " + citasDTOReactiva.getListaTratamientos());
-        System.out.println("Padecimientos " + citasDTOReactiva.getListaPadecimientos());
+        //System.out.println("Tratamientos " + citasDTOReactiva.getListaTratamientos());
+        //System.out.println("Padecimientos " + citasDTOReactiva.getListaPadecimientos());
 
         return this.icitasReactivaService.save(citasDTOReactiva);
     }
@@ -55,9 +55,15 @@ public class citasReactivaResource {
 
 
     @GetMapping("/citasReactivas/{id}/findPadecimientos")
-    private Flux<citasDTOReactiva> findPadecimientosByIdPaciente(@PathVariable("id") String id) {
-        return this.icitasReactivaService.findPadecimientosByIdPaciente(id);
+    private Flux<citasDTOReactiva> obtenerPadecimientosByIdPaciente(@PathVariable("id") String id) {
+        return this.icitasReactivaService.findAilingsByIdPaciente(id);
     }
+
+    @GetMapping("/citasReactivas/{id}/findTratamientos")
+    private Flux<citasDTOReactiva> obtenerTratamientosByIdPaciente(@PathVariable("id") String id) {
+        return this.icitasReactivaService.findTreatmentsByIdPaciente(id);
+    }
+
     //TO DO: Primeras 3 funcionalidades
     @GetMapping(value = "/citasReactivas/buscarFecha/{fecha}")
     private Flux<citasDTOReactiva> buscarPorFecha(@PathVariable("fecha") String fecha) {

@@ -17,36 +17,6 @@ public class tratamientosReactivaServiceImpl implements ItratamientosReactivaSer
     private ItratamientosReactivaRepository tratamientosRepo;
 
     @Override
-    public Mono<tratamientosDTOReactiva> save(tratamientosDTOReactiva tratamientosDTOReactiva) {
-        return this.tratamientosRepo.save(tratamientosDTOReactiva);
-    }
-
-    @Override
-    public Mono<tratamientosDTOReactiva> delete(String id) {
-        return this.tratamientosRepo
-                .findById(id)
-                .flatMap(tratamiento -> this.tratamientosRepo
-                                        .deleteById(tratamiento.getId())
-                                        .thenReturn(tratamiento));
-    }
-
-    @Override
-    public Mono<tratamientosDTOReactiva> update(String id, tratamientosDTOReactiva tratamientosDTOReactiva) {
-        return this.tratamientosRepo.findById(id)
-                .flatMap(tratamiento -> {
-                    tratamientosDTOReactiva.setId(id);
-                    return save(tratamientosDTOReactiva);
-                })
-                .switchIfEmpty(Mono.empty());
-
-    }
-
-    @Override
-    public Flux<tratamientosDTOReactiva> findByIdTratamiento(String id) {
-        return this.tratamientosRepo.findByIdTratamiento(id);
-    }
-
-    @Override
     public Flux<tratamientosDTOReactiva> findAll() {
         return this.tratamientosRepo.findAll();
     }

@@ -5,9 +5,10 @@ import com.springBajo8.springBajo8.domain.padecimientosDTOReactiva;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface IpadecimientosReactivaRepository extends ReactiveMongoRepository<padecimientosDTOReactiva, String>{
 
-    Flux<padecimientosDTOReactiva> findByIdPadecimiento(String idPadecimiento);
+    //Mono<padecimientosDTOReactiva> findByIdAiling(String idPaciente);
     
 }
