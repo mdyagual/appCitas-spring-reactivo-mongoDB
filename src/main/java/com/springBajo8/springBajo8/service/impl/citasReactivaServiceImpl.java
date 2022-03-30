@@ -62,7 +62,8 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     //TO DO - Implementar funcionalidades
     @Override
     public Flux<citasDTOReactiva> findByDate(String date) {
-        return this.IcitasReactivaRepository.findByFechaReservaCita(date);
+        LocalDate ld= LocalDate.parse(date);
+        return this.IcitasReactivaRepository.findByFechaReservaCita(ld);
     }
 
     @Override
@@ -87,8 +88,7 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
         return this.IcitasReactivaRepository.findById(id).flatMap(
                 a -> {
                     a.setEstadoReservaCita("Cancelada");
-                    this.IcitasReactivaRepository.save(a);
-                    return Mono.just(a);
+                    return this.save(a);
                 }
         ).switchIfEmpty(Mono.empty());
     }
