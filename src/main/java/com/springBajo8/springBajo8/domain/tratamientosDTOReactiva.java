@@ -61,6 +61,9 @@ public class tratamientosDTOReactiva {
         this.descripcionTratamiento = descripcionTratamiento;
     }
 
+    public tratamientosDTOReactiva(){
+
+    }
     
     
 }

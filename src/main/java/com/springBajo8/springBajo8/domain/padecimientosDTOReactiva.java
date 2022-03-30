@@ -61,6 +61,10 @@ public class padecimientosDTOReactiva {
         this.descripcionPadecimiento = descripcionPadecimiento;
     }
 
+    public padecimientosDTOReactiva(){
+
+    }
+
     
     
 }
