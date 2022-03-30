@@ -11,5 +11,5 @@ public interface IcitasReactivaRepository extends ReactiveMongoRepository<citasD
     Flux<citasDTOReactiva> findByIdPaciente(String idPaciente);
     Flux<citasDTOReactiva> findByFechaReservaCita(String fecha);
     Flux<citasDTOReactiva> findByHoraReservaCita(String hora);
-    Flux<citasDTOReactiva> findByNombreMedico(String nombre);
+    //Flux<citasDTOReactiva> findByNombreMedico(String nombre);
 }
