@@ -1,9 +1,11 @@
 package com.springBajo8.springBajo8.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.List;
 //import java.util.Date;
 import java.util.UUID;
 
@@ -28,6 +30,20 @@ public class citasDTOReactiva {
     private String horaReservaCita;
 
     private String estadoReservaCita;
+
+    //Agregando referencias a los otros dominios
+
+    @DBRef
+    private tratamientosDTOReactiva tratamiento;
+
+    @DBRef
+    private List<tratamientosDTOReactiva> listaTratamientos;
+
+    @DBRef
+    private padecimientosDTOReactiva padecimiento;
+
+    @DBRef
+    private List<padecimientosDTOReactiva> listaPadecimientos;
 
     public String getId() {
         return id;
@@ -101,7 +117,40 @@ public class citasDTOReactiva {
         this.estadoReservaCita = estadoReservaCita;
     }
 
+    public tratamientosDTOReactiva getTratamiento() {
+        return tratamiento;
+    }
+
+    public void setTratamiento(tratamientosDTOReactiva tratamiento) {
+        this.tratamiento = tratamiento;
+    }
+
+    public List<tratamientosDTOReactiva> getListaTratamientos() {
+        return listaTratamientos;
+    }
+
+    public void setListaTratamientos(List<tratamientosDTOReactiva> listaTratamientos) {
+        this.listaTratamientos = listaTratamientos;
+    }
+
+    public padecimientosDTOReactiva getPadecimiento() {
+        return padecimiento;
+    }
+
+    public void setPadecimiento(padecimientosDTOReactiva padecimiento) {
+        this.padecimiento = padecimiento;
+    }
+
+    public List<padecimientosDTOReactiva> getListaPadecimientos() {
+        return listaPadecimientos;
+    }
+
+    public void setListaPadecimientos(List<padecimientosDTOReactiva> listaPadecimientos) {
+        this.listaPadecimientos = listaPadecimientos;
+    }
+
     //private Date sendedDate = new Date();
 
+    
 
 }
