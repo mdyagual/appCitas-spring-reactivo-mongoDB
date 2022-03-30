@@ -119,4 +119,12 @@ public class citasDTOReactiva {
     public List<padecimientosDTOReactiva> getListaPadecimientos() {
         return listaPadecimientos;
     }
+
+    public void setListaTratamientos(List<tratamientosDTOReactiva> listaTratamientos) {
+        this.listaTratamientos = listaTratamientos;
+    }
+
+    public void setListaPadecimientos(List<padecimientosDTOReactiva> listaPadecimientos) {
+        this.listaPadecimientos = listaPadecimientos;
+    }
 }
