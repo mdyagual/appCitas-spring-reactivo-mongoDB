@@ -1,7 +1,7 @@
 package com.springBajo8.springBajo8.service.impl;
 
 import com.springBajo8.springBajo8.domain.padecimientosDTOReactiva;
-import com.springBajo8.springBajo8.repository.IpadecimintosReactivaRepository;
+import com.springBajo8.springBajo8.repository.IpadecimientosReactivaRepository;
 import com.springBajo8.springBajo8.service.IpadecimientosReactivaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 public class padecimientosReactivaServiceImpl implements IpadecimientosReactivaService{
 
     @Autowired
-    private IpadecimintosReactivaRepository padecimientosRepo;
+    private IpadecimientosReactivaRepository padecimientosRepo;
 
     @Override
     public Mono<padecimientosDTOReactiva> save(padecimientosDTOReactiva padecimientosDTOReactiva) {

@@ -22,17 +22,17 @@ import reactor.core.publisher.Mono;
 public class padecimientosReactivaResource {
 
     @Autowired
-    private IpadecimientosReactivaService padecimientosServices;
+    private IpadecimientosReactivaService ipadecimientosReactivaService;
 
     @PostMapping("/padecimientosReactivos")
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<padecimientosDTOReactiva> save(@RequestBody padecimientosDTOReactiva padecimiento){
-        return this.padecimientosServices.save(padecimiento);
+        return this.ipadecimientosReactivaService.save(padecimiento);
     }
 
     @DeleteMapping("/padecimientosReactivos/{id}")
     private Mono<ResponseEntity<padecimientosDTOReactiva>> delete(@PathVariable("id") String id){
-        return this.padecimientosServices.delete(id)
+        return this.ipadecimientosReactivaService.delete(id)
                 .flatMap(padecimiento -> Mono.just(ResponseEntity.ok(padecimiento)))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
@@ -42,7 +42,7 @@ public class padecimientosReactivaResource {
     private Mono<ResponseEntity<padecimientosDTOReactiva>> update(@PathVariable("id") String id, 
                                             @RequestBody padecimientosDTOReactiva padecimiento)
     {
-        return this.padecimientosServices.update(id, padecimiento)
+        return this.ipadecimientosReactivaService.update(id, padecimiento)
                 .flatMap(padecimientoDTO -> Mono.just(ResponseEntity.ok(padecimientoDTO)))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
@@ -50,12 +50,12 @@ public class padecimientosReactivaResource {
 
     @GetMapping("/padecimientosReactivos/{id}/byIdPadecimiento")
     private Flux<padecimientosDTOReactiva> findAllByIdPadecimiento(@PathVariable("id") String id){
-        return this.padecimientosServices.findByIdPadecimiento(id);
+        return this.ipadecimientosReactivaService.findByIdPadecimiento(id);
     }
 
 
     @GetMapping(value = "/padecimientosReactivos")
     private Flux<padecimientosDTOReactiva> findAll(){
-        return this.padecimientosServices.findAll();
+        return this.ipadecimientosReactivaService.findAll();
     }
 }

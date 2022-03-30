@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 import reactor.core.publisher.Flux;
 
-public interface IpadecimintosReactivaRepository extends ReactiveMongoRepository<padecimientosDTOReactiva, String>{
+public interface IpadecimientosReactivaRepository extends ReactiveMongoRepository<padecimientosDTOReactiva, String>{
 
     Flux<padecimientosDTOReactiva> findByIdPadecimientos(String idPadecimiento);
     
