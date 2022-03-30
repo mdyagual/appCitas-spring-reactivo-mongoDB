@@ -1,7 +1,11 @@
 package com.springBajo8.springBajo8.web;
 
 
+import java.util.List;
+
 import com.springBajo8.springBajo8.domain.citasDTOReactiva;
+import com.springBajo8.springBajo8.domain.padecimientosDTOReactiva;
+import com.springBajo8.springBajo8.domain.tratamientosDTOReactiva;
 import com.springBajo8.springBajo8.service.IcitasReactivaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +23,13 @@ public class citasReactivaResource {
     @PostMapping("/citasReactivas")
     @ResponseStatus(HttpStatus.CREATED)
     private Mono<citasDTOReactiva> save(@RequestBody citasDTOReactiva citasDTOReactiva) {
+        
+        System.out.println("Tratamientos " + citasDTOReactiva.getListaTratamientos());
+        System.out.println("Padecimientos " + citasDTOReactiva.getListaPadecimientos());
+
+        List<padecimientosDTOReactiva> listaPadecimientos = citasDTOReactiva.getListaPadecimientos();
+        List<tratamientosDTOReactiva> listaTratamientos = citasDTOReactiva.getListaTratamientos();
+        
         return this.icitasReactivaService.save(citasDTOReactiva);
     }
 

@@ -151,6 +151,11 @@ public class citasDTOReactiva {
 
     //private Date sendedDate = new Date();
 
-    
+    public void addTratamiento(tratamientosDTOReactiva tratamiento){
+        this.listaTratamientos.add(tratamiento);
+    }
 
+    public void addPadecimiento(padecimientosDTOReactiva padecimiento){
+        this.listaPadecimientos.add(padecimiento);
+    }
 }

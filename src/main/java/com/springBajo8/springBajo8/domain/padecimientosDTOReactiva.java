@@ -49,6 +49,18 @@ public class padecimientosDTOReactiva {
         this.idPadecimiento = idPadecimiento;
     }
 
+    @Override
+    public String toString() {
+        return "padecimientosDTOReactiva [descripcionPadecimiento=" + descripcionPadecimiento + ", id=" + id
+                + ", idPadecimiento=" + idPadecimiento + ", nombrePadecimiento=" + nombrePadecimiento + "]";
+    }
+
+    public padecimientosDTOReactiva(String idPadecimiento, String nombrePadecimiento, String descripcionPadecimiento) {
+        this.idPadecimiento = idPadecimiento;
+        this.nombrePadecimiento = nombrePadecimiento;
+        this.descripcionPadecimiento = descripcionPadecimiento;
+    }
+
     
     
 }

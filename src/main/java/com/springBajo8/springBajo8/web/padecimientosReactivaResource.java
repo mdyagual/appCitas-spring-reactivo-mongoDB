@@ -30,6 +30,12 @@ public class padecimientosReactivaResource {
         return this.ipadecimientosReactivaService.save(padecimiento);
     }
 
+    @PostMapping("/padecimientosReactivos/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    private Mono<padecimientosDTOReactiva> save(@PathVariable("id") String id, @RequestBody padecimientosDTOReactiva padecimiento){
+        return this.ipadecimientosReactivaService.save(padecimiento);
+    }
+
     @DeleteMapping("/padecimientosReactivos/{id}")
     private Mono<ResponseEntity<padecimientosDTOReactiva>> delete(@PathVariable("id") String id){
         return this.ipadecimientosReactivaService.delete(id)
